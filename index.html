@@ -1,0 +1,465 @@
+<!DOCTYPE HTML>
+<html lang="" xmlns="http://www.w3.org/1999/xhtml" class="  full-page-normal">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>非标自动化设备-智能标准化设备-软件研发销售技术服务-深圳市协创鑫科技有限公司</title>
+    <meta name="format-detection" content="telephone=yes" />
+    <meta name="keywords" content="非标自动化设备,智能标准化设备,软件研发销售技术服务">
+    <meta name="description" content="深圳市协创鑫科技有限公司主要从事非标自动化设备,智能标准化设备,软件研发销售技术服务等,我司拥有雄厚的技术实力,完善的服务体系,强大的技术支持,产品质量可靠,售后有保证,是您值得信赖的选择.业务咨询热线0755-23739872.">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="referrer" content="origin">
+    <meta property="og:title" content="非标自动化设备-智能标准化设备-软件研发销售技术服务-深圳市协创鑫科技有限公司" />
+    <meta property="og:url" content="https://www.xcxauto.com" />
+    <meta property="og:image" content="https://img01.71360.com/file/read/www2/M00/14/8E/rBBjB2PYzwGAb2QqAAADTn5AO-Q635.ico" />
+    <meta property="og:description" content="深圳市协创鑫科技有限公司主要从事非标自动化设备,智能标准化设备,软件研发销售技术服务等,我司拥有雄厚的技术实力,完善的服务体系,强大的技术支持,产品质量可靠,售后有保证,是您值得信赖的选择.业务咨询热线0755-23739872." />
+    <link href="https://sitecdn.71360.com/static/txys-001/css/app.css?my_version_number=2023_0315_1057" rel="stylesheet">
+    <link rel="shortcut icon" href=https://img01.71360.com/file/read/www2/M00/14/8E/rBBjB2PYzwGAb2QqAAADTn5AO-Q635.ico>
+    <link rel="apple-touch-icon" href="https://img01.71360.com/file/read/www2/M00/14/8E/rBBjB2PYzwGAb2QqAAADTn5AO-Q635.ico"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <script src="https://unpkg.com/jspdf@2.5.0/dist/jspdf.umd.min.js"></script>
+
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        #pool {
+            max-height: 200px;
+            overflow: auto;
+        }
+
+        footer {
+            display: grid;
+            place-items: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img class="logoImg" src="https://img01.71360.com/file/read/www2/M00/14/67/rBBjB2PYvIaAY9qAAAANsNtIFJs639.png" title="深圳市协创鑫科技有限公司" alt="深圳市协创鑫科技有限公司"/>
+        <h1>协创鑫水印添加专属</h1>
+        <h2>给你的pdf文档添加专属文字水印 （访问 <a
+                href="https://www.xcxauto.com/">深圳协创鑫官网</a>）</h2>
+    </header>
+    <main>
+        <section>
+            <label for="diagonal">
+                大屏主水印 <small>（明显）</small>
+            </label>
+            <input style="width: 100%; box-sizing: border-box;" type="text" id="diagonal" placeholder="请输入大水印内容"
+                value="深圳协创鑫" />
+            <label for="mozaic">
+                全屏小水印 <small>（较浅）</small>
+            </label>
+            <input style="width: 100%; box-sizing: border-box;" type="text" id="mozaic" placeholder="请输入全屏小水印内容"
+                value="绝密档案" />
+            <div id="message"></div>
+            <label for="ad">
+                添加深圳协创鑫官网网址
+            </label>
+            <input type="checkbox" id="ad" checked />
+            <div>
+                <br>
+            </div>
+            <label for="pdf">
+                请上传您需要添加水印的PDF文件
+            </label>
+            <input type="file" multiple id="pdf" accept=".pdf" />
+            <ul id="pool" style="list-style: none; padding-left: 10px;">
+            </ul>
+            <button id="export" type="button">输出</button>
+        </section>
+        <section id="demo">
+        </section>
+
+    </main>
+
+    <footer>
+        <span>源制作 <a href="https://github.com/aloisdg/" title="My GitHub">@aloisdg</a>
+            汉化作者 <a href="https://github.com/tomhitu/" title="My GitHub">@tomhitu</a>
+        </span>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/watermarkjs@2.1.1/dist/watermark.min.js"></script>
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"
+        integrity="sha512-xQBQYt9UcgblF6aCMrwU1NkVA7HCXaSN2oq0so80KO+y68M+n64FOcqgav4igHe6D5ObBLIf68DWv+gfBowczg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const getLines = (context, paragraph, maxWidth) => {
+            const words = paragraph.split(" ");
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                const word = words[i];
+                const width = context.measureText(currentLine + " " + word).width;
+                if (width < (maxWidth / 2)) {
+                    currentLine += " " + word;
+                } else {
+                    lines.push(currentLine);
+                    currentLine = word;
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const getLinesForParagraphs = (context, message, maxWidth) =>
+            message
+            .split("\n")
+            .map(paragraph => getLines(context, paragraph, maxWidth))
+            .reduce((a, b) => a.concat(b), [])
+
+        const rotate = (target, diagonal, mozaic, message, ad) => {
+            const context = target.getContext("2d");
+            const halfDiagonal = Math.sqrt(Math.pow(target.width, 2) + Math.pow(target.height, 2)) / 2;
+            const fontBase = Math.floor(halfDiagonal / 5);
+            const fontXL = fontBase;
+            const fontM = fontBase / 3;
+            const fontXS = fontBase / 4;
+            const fontXXS = fontBase / 8;
+
+            //mozaic
+            if (mozaic) {
+                context.save();
+                context.fillStyle = "#c4c4c4";
+                context.globalAlpha = 0.15;
+                context.font = `${fontXS}px serif`;
+                const metrics = context.measureText(mozaic);
+                context.translate(0, 0);
+                const gap = 2 * metrics.width / 3;
+                for (let i = 0; i < target.width; i += metrics.width - gap) {
+                    for (let j = 0; j < target.height; j += fontXS + gap) {
+                        context.save();
+                        context.textAlign = "center";
+                        context.textBaseline = "middle";
+                        context.translate(i + (metrics.width - gap) / 2, j + (fontXS + gap) / 2);
+                        context.rotate(-45 * Math.PI / 180);
+                        context.fillText(mozaic, 0, 0);
+                        context.restore();
+                    }
+                }
+                context.restore();
+            }
+
+            if (diagonal) {
+                context.save();
+                const metrics = context.measureText(diagonal);
+                context.textAlign = "center";
+                context.textBaseline = "middle";
+
+                context.translate(
+                    target.width / 2 - (metrics.width / 2),
+                    target.height / 2 + fontXL / 2);
+                context.fillStyle = "#c4c4c4";
+                context.globalAlpha = 0.5;
+                context.font = `${fontXL}px Josefin Slab`;
+                context.rotate(-45 * Math.PI / 180);
+                context.fillText(diagonal, 0, 0);
+                context.restore();
+            }
+
+            if (message) {
+                const gap = 10;
+
+                context.save();
+                context.fillStyle = "#0f0";
+                context.font = `${fontM}px Josefin Slab`;
+                context.globalAlpha = 0.9;
+
+                const lines = getLinesForParagraphs(context, message, target.width);
+
+                lines.forEach((line, i) => {
+                    context.save();
+                    context.translate(
+                        Math.floor(target.width / 4),
+                        target.height / 4 /* + fontM * lines.length / 2 */ + i * (fontM + gap)
+                    );
+
+                    context.fillText(line, 0, 0);
+                    // context.strokeStyle = "white";
+                    // context.strokeText(line, 0, 0);
+                    context.restore();
+                })
+
+                context.restore();
+            }
+
+            if (ad) {
+                const gap = 2;
+                const adText = "https://www.xcxauto.com/";
+                context.save();
+                context.fillStyle = "#232323";
+                context.font = `${fontXXS}px Josefin Slab`;
+                context.globalAlpha = 0.9;
+                // context.translate(0, 0);
+                context.fillText(adText,
+                    target.width - gap * 10 - context.measureText(adText).width,
+                    target.height - gap - fontXXS);
+                context.restore();
+            }
+            return target;
+        };
+
+        const range = (n, step) =>
+            Array.from(Array(n).keys()).map((x) => x + (step ? step : 0));
+
+        const getPagesFromPdf = async (arrayBuffer) => {
+            const file = new Uint8Array(arrayBuffer);
+            const pdf = await pdfjs.getDocument(file).promise;
+            const pagesRange = range(pdf.numPages, 1);
+            const pages = Promise.all(pagesRange.map((num) => pdf.getPage(num)));
+            return pages;
+        }
+
+        const loadFileAsync = (file) => new Promise((resolve, reject) => {
+            const fileReader = new FileReader();
+            fileReader.addEventListener('load', () => resolve(fileReader));
+            fileReader.addEventListener('error', (err) => reject(err));
+            fileReader.readAsArrayBuffer(file);
+        });
+
+        const renderPage = async (page) => {
+            var scale = 1.5;
+
+            var viewport = page.getViewport({
+                scale: scale,
+            });
+
+            var canvas = document.createElement("canvas");
+            var context = canvas.getContext("2d");
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            var renderContext = {
+                canvasContext: context,
+                viewport: viewport,
+            };
+            await page.render(renderContext).promise;
+            return canvas;
+        }
+
+        const blobize = (canvas) => new Promise(
+            (resolve, reject) => canvas.toBlob((blob) => resolve(blob)))
+
+        const addWatermark = (blob, diagonal, mozaic, message, ad) =>
+            new Promise((resolve, reject) =>
+                watermark([blob])
+                .blob((target) => rotate(target, diagonal, mozaic, message, ad))
+                .then(blob => resolve(blob)))
+
+        const readPdfAsBlobs = async (file, diagonal, mozaic, message, ad) => {
+            const fileReader = await loadFileAsync(file)
+            const pages = await getPagesFromPdf(fileReader.result)
+            const canvases = await Promise.all(pages.map(renderPage))
+            const blobs = await Promise.all(canvases.map(blobize))
+            const watermarkedBlobs = await Promise.all(blobs.map(b => addWatermark(b, diagonal, mozaic, message,
+                ad)));
+            return {
+                name: file.name,
+                blobs: watermarkedBlobs
+            };
+        };
+
+        var pdfjs = window["pdfjs-dist/build/pdf"];
+        pdfjs.GlobalWorkerOptions.workerSrc =
+            "https://mozilla.github.io/pdf.js/build/pdf.worker.js";
+
+        const _files = new Map();
+        let _id = 0;
+
+        document.getElementById("pdf").onchange = async (ev) => {
+            const targetFiles = ev.target.files;
+            if (!targetFiles) return;
+            const diagonal = document.querySelector("#diagonal").value;
+            const mozaic = document.querySelector("#mozaic").value;
+            const message = document.querySelector("#message").value;
+            const ad = document.querySelector("#ad").checked;
+            const files = [...targetFiles];
+
+            files.forEach(file => {
+                const child = document.createElement('li');
+                const span = document.createElement('span');
+                span.textContent = file.name;
+                const button = document.createElement('button');
+                button.textContent = "❌";
+                button.style.padding = 0;
+                button.onclick = (e) => {
+                    _files.delete(
+                        `${e.target.parentElement.dataset.id}-${e.target.nextElementSibling.textContent}`
+                    );
+                    e.target.parentElement.remove();
+                };
+                child.appendChild(button);
+                child.appendChild(span);
+                child.dataset.id = _id;
+
+                document.querySelector('#pool').appendChild(child)
+                _files.set(`${_id}-${file.name}`, file);
+                _id++;
+            })
+            return;
+        }
+
+        function toDataURL(blob) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onloadend = () => resolve(reader.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(blob);
+            });
+        }
+
+
+        const exportZip = async (diagonal, mozaic, message, ad) => {
+            const files = Array.from(_files.values())
+            const items = await Promise.all(files.map(f => readPdfAsBlobs(f, diagonal, mozaic, message, ad)))
+
+            const zip = new JSZip();
+            const zipOptions = {
+                type: "blob"
+            };
+            const blobsWithName = items.forEach(item => {
+                if (item.blobs.length === 1) {
+                    zip.file(`${item.name}.png`, item.blobs[0]);
+                    return;
+                };
+                const folder = zip.folder(item.name);
+                item.blobs.forEach((blob, i) => folder.file(`${item.name}-page${i + 1}.png`, blob))
+            });
+
+            const blobZip = await zip.generateAsync(zipOptions)
+            saveAs(blobZip, "appart.zip");
+        }
+
+        function toDataURL(blob) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onloadend = () => resolve(reader.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(blob);
+            });
+        }
+
+        async function exportPdf(diagonal, mozaic, message, ad) {
+            const files = Array.from(_files.values());
+            const items = await Promise.all(
+                files.map((f) => readPdfAsBlobs(f, diagonal, mozaic, message, ad))
+            );
+
+            const pdf = new window.jspdf.jsPDF("p", "pt", "a4");
+            let yOffset = 40;
+            let firstImage = true;
+
+            for (const item of items) {
+                for (let i = 0; i < item.blobs.length; i++) {
+                    const blob = item.blobs[i];
+                    const imgDataUrl = await toDataURL(blob);
+                    const imgProps = pdf.getImageProperties(imgDataUrl);
+                    const pdfWidth = pdf.internal.pageSize.getWidth();
+                    const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+                    if (yOffset + pdfHeight > pdf.internal.pageSize.getHeight() - 40) {
+                        if (!firstImage) {
+                            pdf.addPage();
+                        }
+                        yOffset = 40;
+                    }
+
+                    pdf.addImage(imgDataUrl, "JPEG", 0, yOffset, pdfWidth, pdfHeight);
+                    yOffset += pdfHeight + 10;
+                    firstImage = false;
+                }
+            }
+
+            pdf.save("exported-items.pdf");
+        }
+
+
+
+        const options = {
+            init: (img) => {
+                img.crossOrigin = 'anonymous';
+            }
+        }
+
+        document.querySelector("#export").onclick = async () => {
+            if (_files.size === 0) return;
+            const diagonal = document.querySelector("#diagonal").value;
+            const mozaic = document.querySelector("#mozaic").value;
+            const message = document.querySelector("#message").value;
+            const ad = document.querySelector("#ad").checked;
+            //await exportZip(diagonal, mozaic, message, ad);
+            await exportPdf(diagonal, mozaic, message, ad);
+
+        }
+
+
+        const updateDemo = (diagonal, mozaic, message, ad) => {
+            watermark(['https://raw.githubusercontent.com/tomhitu/picture/main/pdf.jpg'], options)
+                .image(target => rotate(target, diagonal, mozaic, message, ad))
+                .then((img) => {
+                    document.getElementById('demo').innerHTML = "";
+                    document.getElementById('demo').appendChild(img);
+                    // watermark.destroy();
+                });
+        }
+
+        document.querySelector('#diagonal').oninput = (e) => {
+            updateDemo(
+                e.target.value,
+                document.querySelector('#mozaic').value,
+                document.querySelector('#message').value,
+                document.querySelector('#ad').checked);
+        }
+
+        document.querySelector('#message').onchange = (e) => {
+            updateDemo(
+                document.querySelector('#diagonal').value,
+                document.querySelector('#mozaic').value,
+                e.target.value,
+                document.querySelector('#ad').checked);
+        }
+
+        document.querySelector('#mozaic').onchange = (e) => {
+            updateDemo(
+                document.querySelector('#diagonal').value,
+                e.target.value,
+                document.querySelector('#message').value,
+                document.querySelector('#ad').checked);
+        }
+
+        document.querySelector('#ad').onclick = (e) => {
+            updateDemo(
+                document.querySelector('#diagonal').value,
+                document.querySelector('#mozaic').value,
+                document.querySelector('#message').value,
+                e.target.checked);
+        }
+
+        updateDemo(
+            document.querySelector('#diagonal').value,
+            document.querySelector('#mozaic').value,
+            document.querySelector('#message').value,
+            document.querySelector('#ad').checked);
+    </script>
+</body>
+
+</html>
