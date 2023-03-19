@@ -4,3 +4,5 @@ watermark pdf
 refer to https://github.com/aloisdg/filigrane
 
 inspired by https://blog.jinka.fr/comment-eviter-les-arnaques-a-la-location/
+
+upgrate -> convert output from zip package to pdf
