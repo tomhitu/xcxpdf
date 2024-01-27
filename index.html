@@ -81,7 +81,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/watermarkjs@2.1.1/dist/watermark.min.js"></script>
-    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"
         integrity="sha512-xQBQYt9UcgblF6aCMrwU1NkVA7HCXaSN2oq0so80KO+y68M+n64FOcqgav4igHe6D5ObBLIf68DWv+gfBowczg=="
@@ -312,42 +312,12 @@
             });
         }
 
-
-        const exportZip = async (diagonal, mozaic, message, ad) => {
-            const files = Array.from(_files.values())
-            const items = await Promise.all(files.map(f => readPdfAsBlobs(f, diagonal, mozaic, message, ad)))
-
-            const zip = new JSZip();
-            const zipOptions = {
-                type: "blob"
-            };
-            const blobsWithName = items.forEach(item => {
-                if (item.blobs.length === 1) {
-                    zip.file(`${item.name}.png`, item.blobs[0]);
-                    return;
-                };
-                const folder = zip.folder(item.name);
-                item.blobs.forEach((blob, i) => folder.file(`${item.name}-page${i + 1}.png`, blob))
-            });
-
-            const blobZip = await zip.generateAsync(zipOptions)
-            saveAs(blobZip, "appart.zip");
-        }
-
-        function toDataURL(blob) {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onloadend = () => resolve(reader.result);
-                reader.onerror = reject;
-                reader.readAsDataURL(blob);
-            });
-        }
-
         async function exportPdf(diagonal, mozaic, message, ad) {
             const files = Array.from(_files.values());
             const items = await Promise.all(
                 files.map((f) => readPdfAsBlobs(f, diagonal, mozaic, message, ad))
             );
+            // console.log("items[0].name", items[0].name);
 
             const pdf = new window.jspdf.jsPDF("p", "pt", "a4");
             let yOffset = 40;
@@ -372,9 +342,8 @@
                     yOffset += pdfHeight + 10;
                     firstImage = false;
                 }
+                pdf.save("marked" + item.name);
             }
-
-            pdf.save("exported-items.pdf");
         }
 
 
