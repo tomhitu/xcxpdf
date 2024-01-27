@@ -319,11 +319,11 @@
             );
             // console.log("items[0].name", items[0].name);
 
-            const pdf = new window.jspdf.jsPDF("p", "pt", "a4");
-            let yOffset = 40;
-            let firstImage = true;
 
             for (const item of items) {
+                let pdf = new window.jspdf.jsPDF("p", "pt", "a4");
+                let yOffset = 40;
+                let firstImage = true;
                 for (let i = 0; i < item.blobs.length; i++) {
                     const blob = item.blobs[i];
                     const imgDataUrl = await toDataURL(blob);
